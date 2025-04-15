@@ -27,6 +27,7 @@
 	  gcc
 	  fzf
 	  jq
+          fd
         ];
       };
     };
