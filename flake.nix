@@ -24,7 +24,9 @@
           lazygit
           neovim
           nnn-nerd
-          # Add other packages for sini-horse machine here
+	  gcc
+	  fzf
+	  jq
         ];
       };
     };
