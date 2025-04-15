@@ -2,7 +2,7 @@ if status is-interactive
     set -gx EDITOR 'nvim'
     set fish_greeting
     set FZF_DEFAULT_COMMAND 'fd --type f --color=always'
-  
+    set -gx fisher_path '~/.local/shared/fish/plugins'  
     if command -q cargo
         if test -f "$HOME/.cargo/env.fish"
             source "$HOME/.cargo/env.fish"
