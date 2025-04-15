@@ -2,7 +2,32 @@ if status is-interactive
     set -gx EDITOR 'nvim'
     set fish_greeting
     set FZF_DEFAULT_COMMAND 'fd --type f --color=always'
-    set -gx fisher_path '~/.local/shared/fish/plugins'  
+
+    # Auto-install Fisher and plugins
+    if not functions -q fisher
+        echo "Installing Fisher..."
+        curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+    end
+
+    set -l desired_plugins \
+        woheedev/onedark-fish \
+        acomagu/fish-async-prompt@a89bf4216b65170e4c3d403e7cbf24ce34b134e6 \
+        jethrokuan/z \
+        patrickf1/fzf.fish '\
+
+    # Install missing plugins
+    for plugin in $desired_plugins
+        if not fisher list | grep -Fx $plugin >/dev/null
+            echo "Installing $plugin..."
+            fisher install $plugin
+        end
+    end
+
+    # Load fzf key bindings if fzf.fish is installed
+    # if functions -q fzf_key_bindings
+    #    fzf_key_bindings
+    # end
+
     if command -q cargo
         if test -f "$HOME/.cargo/env.fish"
             source "$HOME/.cargo/env.fish"
@@ -30,7 +55,6 @@ if status is-interactive
     set -gx NNN_FCOLORS "$BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SOCK$OTHER"
     set -gx NNN_PLUG "q:autojump;p:preview-tui;w:fzcd"
     alias nnn "nnn -e"
-    alias ls "nnn -de"
     alias qw "n -de"
     alias :q "exit"
     alias ld "lazydocker"
