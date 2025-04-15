@@ -13,7 +13,7 @@ if status is-interactive
         woheedev/onedark-fish \
         acomagu/fish-async-prompt@a89bf4216b65170e4c3d403e7cbf24ce34b134e6 \
         jethrokuan/z \
-        patrickf1/fzf.fish '\
+        patrickf1/fzf.fish
 
     # Install missing plugins
     for plugin in $desired_plugins
