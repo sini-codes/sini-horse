@@ -50,3 +50,7 @@ fi
 # Set Fish theme to "One Dark" non-interactively
 echo "Setting Fish theme to One Dark..."
 echo -e "y\n" | fish -c 'fish_config theme save "One Dark"' >/dev/null 2>&1
+
+# Ensure git configuration
+git config --global user.email "sinitreo@gmail.com"
+git config --global user.name "sini"
