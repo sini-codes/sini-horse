@@ -18,7 +18,7 @@ Add key on the [Keys](https://github.com/settings/keys) page.
 
 ```bash
 cd ~
-git clone https://github.com/sini-codes/sini-horse
+git clone git@github.com:sini-codes/sini-horse.git
 cd sini-horse
 chmod +x setup.sh
 ./setup.sh
