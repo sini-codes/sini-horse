@@ -19,7 +19,7 @@ fi
 # Check for Flake in the same directory and install or update packages
 echo "Checking for Flake and installing/updating Docker packages..."
 SCRIPT_DIR="$(dirname "$0")"
-if [ -f "$SCRIPT_DIR/docker-flake.nix" ]; then
+if [ -f "$SCRIPT_DIR/flake.nix" ]; then
     # Remove existing docker-env profile entry to ensure clean update
     nix --extra-experimental-features "nix-command flakes" profile remove docker-env 2>/dev/null || true
     nix --extra-experimental-features "nix-command flakes" profile install "$SCRIPT_DIR"#default
