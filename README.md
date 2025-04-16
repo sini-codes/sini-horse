@@ -22,4 +22,10 @@ git clone https://github.com/sini-codes/sini-horse
 cd sini-horse
 chmod +x setup.sh
 ./setup.sh
+
+# Need to reset shell so new things are pulled in ENV
+bash
+
+# Run zellij
+zellij -l welcome
 ```
