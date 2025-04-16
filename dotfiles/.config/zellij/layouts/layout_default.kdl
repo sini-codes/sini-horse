@@ -24,7 +24,7 @@ layout {
         children
         pane size=1 borderless=true {
             plugin location="file:~/.config/zellij/plugins/zjstatus.wasm" {
-                format_left   "{mode} #[fg=#89B4FA,bold]{session}"
+                format_left   "{mode} #[fg=#89B4FA,bold]{session} @ {command_hostname}"
                 format_center "{tabs}"
                 format_right  "{command_git_branch} {datetime}"
                 format_space  ""
@@ -46,6 +46,11 @@ layout {
                 command_git_branch_format      "#[fg=blue] {stdout} "
                 command_git_branch_interval    "10"
                 command_git_branch_rendermode  "static"
+
+                command_hostname_command       "hostname"
+                command_hostname_format        "#[fg=#89B4FA,bold]{stdout}"
+                command_hostname_interval      "0"
+                command_hostname_rendermode    "static"
 
                 datetime        "#[fg=#6C7086,bold] {format} "
                 datetime_format "%d %b %Y %H:%M"
