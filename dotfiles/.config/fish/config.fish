@@ -3,26 +3,6 @@ if status is-interactive
     set fish_greeting
     set FZF_DEFAULT_COMMAND 'fd --type f --color=always'
 
-    # Auto-install Fisher and plugins
-    if not functions -q fisher
-        echo "Installing Fisher..."
-        curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
-    end
-
-    set -l desired_plugins \
-        woheedev/onedark-fish \
-        acomagu/fish-async-prompt@a89bf4216b65170e4c3d403e7cbf24ce34b134e6 \
-        jethrokuan/z \
-        patrickf1/fzf.fish
-
-    # Install missing plugins
-    for plugin in $desired_plugins
-        if not fisher list | grep -Fx $plugin >/dev/null
-            echo "Installing $plugin..."
-            fisher install $plugin
-        end
-    end
-
     # Load fzf key bindings if fzf.fish is installed
     # if functions -q fzf_key_bindings
     #    fzf_key_bindings
@@ -69,12 +49,14 @@ if status is-interactive
     set -U ZO_METHOD "nnn"
     set -U Z_DATA "$HOME/.z" # This is here for nnn:autojump plugin to work
 
+
     ######## configure bat #############
     set -gx BAT_THEME OneHalfDark
-
+    
     #if not set -q ZELLIJ
     #zellij attach -c "Novil" options --default-layout "/home/sini/.config/zellij/layouts/layout1.kdl"
     #end
-
+    ####### configure theme ############
+    set -Ux fish_theme "One Dark"
 
 end
