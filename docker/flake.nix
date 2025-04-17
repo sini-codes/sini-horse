@@ -15,7 +15,7 @@
 				name = "docker-env";
 				paths = with pkgs; [
 					docker
-					d:ocker-compose
+					docker-compose
 				];
 			};
 		};
