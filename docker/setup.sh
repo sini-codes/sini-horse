@@ -31,8 +31,8 @@ fi
 # Ensure Docker service is enabled (idempotent)
 echo "Ensuring Docker service is accessible..."
 if command -v systemctl >/dev/null 2>&1; then
-    sudo systemctl enable docker 2>/dev/null || echo "Warning: Could not enable Docker service (may require root or not be applicable)."
-    sudo systemctl start docker 2>/dev/null || echo "Warning: Could not start Docker service."
+    systemctl enable docker 2>/dev/null || echo "Warning: Could not enable Docker service (may require root or not be applicable)."
+    systemctl start docker 2>/dev/null || echo "Warning: Could not start Docker service."
 else
     echo "Warning: systemctl not found, skipping Docker service enablement."
 fi
@@ -40,8 +40,8 @@ fi
 # Add user to docker group (idempotent)
 if [ -n "$USER" ]; then
     echo "Adding $USER to docker group for non-root Docker usage..."
-    sudo groupadd docker 2>/dev/null || true
-    sudo usermod -aG docker "$USER" 2>/dev/null || echo "Warning: Could not add $USER to docker group."
+    groupadd docker 2>/dev/null || true
+    usermod -aG docker "$USER" 2>/dev/null || echo "Warning: Could not add $USER to docker group."
 fi
 
 echo "Docker and Docker Compose installation complete."
